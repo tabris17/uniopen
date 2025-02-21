@@ -1,0 +1,9 @@
+
+.env
+
+build/
+out/
+
+.vscode/
+.idea/
+.vs/

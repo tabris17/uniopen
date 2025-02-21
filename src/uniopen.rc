@@ -1,0 +1,34 @@
+#include <windows.h>
+#include "uniopen.h"
+
+
+IDI_UNIOPEN ICON    "data/uniopen.ico"
+
+IDR_MAGIC   MAGIC   "data/magic.mgc"
+
+STRINGTABLE LANGUAGE LANG_ENGLISH, SUBLANG_NEUTRAL
+BEGIN
+    IDS_APP_NAME "UniOpen\0"
+    IDS_ERROR "Error\0"
+    IDS_ERROR_INIT_MAGIC "Unable to initialize magic library\0"
+    IDS_ERROR_LOAD_MAGIC "Cannot load magic database: %s\0"
+    IDS_ERROR_FILE_TYPE "Unknown file type: %s\0"
+END
+
+STRINGTABLE LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
+BEGIN
+    IDS_APP_NAME "UniOpen\0"
+    IDS_ERROR "错误\0"
+    IDS_ERROR_INIT_MAGIC "无法初始化 magic 库\0"
+    IDS_ERROR_LOAD_MAGIC "无法加载 magic 数据库: %s\0"
+    IDS_ERROR_FILE_TYPE "未知文件类型: %s\0"
+END
+
+STRINGTABLE LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL
+BEGIN
+    IDS_APP_NAME "UniOpen\0"
+    IDS_ERROR "錯誤\0"
+    IDS_ERROR_INIT_MAGIC "無法初始化 magic 庫\0"
+    IDS_ERROR_LOAD_MAGIC "無法加載 magic 數據庫: %s\0"
+    IDS_ERROR_FILE_TYPE "未知文件類型: %s\0"
+END
