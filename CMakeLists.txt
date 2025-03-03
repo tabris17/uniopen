@@ -87,19 +87,6 @@ target_include_directories(uniopen PRIVATE "${CMAKE_SOURCE_DIR}")
 target_link_libraries(uniopen magicstatic ${LIBMAGIC_LIBS})
 set_target_properties(uniopen PROPERTIES LINK_FLAGS "-municode")
 
-if(NOT EXISTS ${OUTPUT_DIR})
-  file(MAKE_DIRECTORY ${OUTPUT_DIR})  
-endif()
-
-set(MAGIC_DIR file/magic/Magdir)
-file(GLOB MAGIC_FRAGMENTS "${MAGIC_DIR}/*")
-file(WRITE "${OUTPUT_DIR}/magic" "")
-
-foreach(MAGIC_FRAGMENT ${MAGIC_FRAGMENTS})
-  file(READ ${MAGIC_FRAGMENT} MAGIC_FRAGMENT_CONTENTS)
-  file(APPEND "${OUTPUT_DIR}/magic" "${MAGIC_FRAGMENT_CONTENTS}\n")
-endforeach()
-
 execute_process(
   WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/file"
   COMMAND git apply "${PATCH_DIR}/cdf_h.patch"
