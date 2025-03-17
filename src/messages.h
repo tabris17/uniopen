@@ -11,10 +11,11 @@
 #define MESSAGE_MAX             1100
 #define MESSAGE_COUNT           (MESSAGE_MAX - MESSAGE_BASE)
 #define MAX_MSG                 256 // Maximum message length
+#define MSG(MESSAGE_ID)         (messages[MESSAGE_ID - MESSAGE_BASE])
 
-extern PWSTR messages[MESSAGE_COUNT];
+extern PCWSTR messages[MESSAGE_COUNT];
 
 int load_messages(void);
-static inline PWSTR msg(const UINT id) { return messages[id - MESSAGE_BASE]; }
+PWSTR format_message(PCWSTR format, ...);
 
 #endif // MESSAGES_H

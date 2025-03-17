@@ -58,8 +58,11 @@ set(LIBMAGIC_SOURCE_FILES
   file/src/strlcpy.c
   file/src/vasprintf.c
 )
-set(LIBMAGIC_LIBS shlwapi pcre2-posix)
 set(LIBMAGIC_DEFINITIONS -DHAVE_CONFIG_H -DVERSION="${FILE_VERSION}")
+set(LIBLMDB_SOURCE_FILES 
+  lmdb/libraries/liblmdb/mdb.c
+  lmdb/libraries/liblmdb/midl.c
+)
 set(UNIOPEN_SOURCE_FILES
   src/uniopen.c
   src/uniopen.rc
@@ -72,19 +75,19 @@ string(REPLACE "." "" FILE_VERSION_WITHOUT_DOT "${FILE_VERSION}")
 string(REPLACE "X.YY" ${FILE_VERSION_WITHOUT_DOT} MAGIC_H_CONTENT_NEW "${MAGIC_H_CONTENT}")
 file(WRITE file/src/magic.h "${MAGIC_H_CONTENT_NEW}")
 
-include_directories("${CMAKE_SOURCE_DIR}/include" pcre2/src file/src src)
+include_directories("${CMAKE_SOURCE_DIR}/include" pcre2/src file/src lmdb/libraries/liblmdb src)
 
-set(PCRE2_BUILD_PCRE2GREP OFF CACHE BOOL "Build pcre2grep" FORCE)
-set(PCRE2_BUILD_TESTS OFF CACHE BOOL "Build pcre2grep tests" FORCE)
 add_subdirectory(pcre2 EXCLUDE_FROM_ALL)
 
-add_library(magicstatic STATIC ${LIBMAGIC_SOURCE_FILES})
-target_compile_definitions(magicstatic PUBLIC ${LIBMAGIC_DEFINITIONS})
+add_library(magic-static STATIC ${LIBMAGIC_SOURCE_FILES})
+target_compile_definitions(magic-static PUBLIC ${LIBMAGIC_DEFINITIONS})
+
+add_library(lmdb-static STATIC ${LIBLMDB_SOURCE_FILES})
 
 add_executable(uniopen WIN32 ${UNIOPEN_SOURCE_FILES})
-add_dependencies(uniopen pcre2-posix magicstatic)
+add_dependencies(uniopen pcre2-posix magic-static lmdb-static)
 target_include_directories(uniopen PRIVATE "${CMAKE_SOURCE_DIR}")
-target_link_libraries(uniopen magicstatic ${LIBMAGIC_LIBS})
+target_link_libraries(uniopen magic-static lmdb-static pcre2-posix shlwapi comctl32)
 set_target_properties(uniopen PROPERTIES LINK_FLAGS "-municode")
 
 execute_process(

@@ -6,3 +6,6 @@
 	path = pcre2
 	url = https://github.com/PCRE2Project/pcre2
 	branch = release/pcre2-10.45
+[submodule "lmdb"]
+	path = lmdb
+	url = https://github.com/LMDB/lmdb

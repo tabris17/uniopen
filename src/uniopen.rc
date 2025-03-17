@@ -1,34 +1,45 @@
 #include <windows.h>
 #include "uniopen.h"
 
+CREATEPROCESS_MANIFEST_RESOURCE_ID  RT_MANIFEST "data/manifest.xml"
 
 IDI_UNIOPEN ICON    "data/uniopen.ico"
 
 IDR_MAGIC   MAGIC   "data/magic.mgc"
 
+
 STRINGTABLE LANGUAGE LANG_ENGLISH, SUBLANG_NEUTRAL
 BEGIN
     IDS_APP_NAME "UniOpen\0"
-    IDS_ERROR "Error\0"
-    IDS_ERROR_INIT_MAGIC "Unable to initialize magic library\0"
-    IDS_ERROR_LOAD_MAGIC "Cannot load magic database: %s\0"
-    IDS_ERROR_FILE_TYPE "Unknown file type: %s\0"
+    IDS_ERROR_CORRUPTED "The application has been corrupted. Please reinstall it.\0"
+    IDS_ERROR_FILE_TYPE "Unknown file type: %S\0"
+    IDS_ERROR_UNREADABLE "Cannot read file: %S\0"
+    IDS_ERROR_OCCURRED "An error occurred when opening the file\0"
+    IDS_IGNORE "Ignore\0"
+    IDS_IGNORE_ALL "Ignore All\0"
+    IDS_ABORT "Abort\0"
 END
 
 STRINGTABLE LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_SIMPLIFIED
 BEGIN
     IDS_APP_NAME "UniOpen\0"
-    IDS_ERROR "错误\0"
-    IDS_ERROR_INIT_MAGIC "无法初始化 magic 库\0"
-    IDS_ERROR_LOAD_MAGIC "无法加载 magic 数据库: %s\0"
-    IDS_ERROR_FILE_TYPE "未知文件类型: %s\0"
+    IDS_ERROR_CORRUPTED "应用程序已损坏，请重新安装。\0"
+    IDS_ERROR_FILE_TYPE "未知文件类型: %S\0"
+    IDS_ERROR_UNREADABLE "无法读取文件: %S\0"
+    IDS_ERROR_OCCURRED "打开文件时发生错误\0"
+    IDS_IGNORE "忽略\0"
+    IDS_IGNORE_ALL "忽略全部\0"
+    IDS_ABORT "中止\0"
 END
 
 STRINGTABLE LANGUAGE LANG_CHINESE, SUBLANG_CHINESE_TRADITIONAL
 BEGIN
     IDS_APP_NAME "UniOpen\0"
-    IDS_ERROR "錯誤\0"
-    IDS_ERROR_INIT_MAGIC "無法初始化 magic 庫\0"
-    IDS_ERROR_LOAD_MAGIC "無法加載 magic 數據庫: %s\0"
-    IDS_ERROR_FILE_TYPE "未知文件類型: %s\0"
+    IDS_ERROR_CORRUPTED "應用程式已損壞，請重新安裝。\0"
+    IDS_ERROR_FILE_TYPE "未知檔案類型: %S\0"
+    IDS_ERROR_UNREADABLE "無法讀取檔案: %S\0"
+    IDS_ERROR_OCCURRED "開啟檔案時發生錯誤\0"
+    IDS_IGNORE "略過\0"
+    IDS_IGNORE_ALL "略過全部\0"
+    IDS_ABORT "中止\0"
 END
